@@ -18,7 +18,7 @@ Lorem ipsum dolor sit amet.
 |O3. |CSS   |Look & Feel - Cascading Style Sheet   |
 |O4. |Javascript |Behavior - Programing Language   |
 
-|[profile](/src/imgs/profile-sm.webp)
+|[profile](/src/imgs/perfil.jpeg)
 
 [ADSO Files DRIVE](https://tinyurl.com/wnkk334u)
 
