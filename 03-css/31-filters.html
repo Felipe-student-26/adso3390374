@@ -7,23 +7,64 @@
     <link rel="stylesheet" href="../src/css/master.css">
     <style>
         section .filter {
-            background: url(imgs/cyndaquil2.png) center / contain no-repeat;
-            border: 2px solid #fff;
-            height: 220px;
-            margin: 1rem auto 2rem;
-            width: 100%;
-        }
+            width: 220px;
+            max-width: 100%;
+            display: block;
+            margin: 1rem auto;
+            outline: 2px solid white;
+            border-radius: 14px;
+            corner-shape: squircle;
+            background: linear-gradient(45deg,red 50%,blue 50%);
+            transition: all 0.2s ease-in;
 
-        section .sepia {
-            filter: sepia(100%);
-        }
+            &.sepia {
+                filter: sepia(1);
+            }
 
-        section .grayscale {
-            filter: grayscale(100%);
-        }
+            &.grayscale {
+                filter: grayscale(1);
+            }
 
-        section .negative {
-            filter: invert(100%);
+            &.negative {
+                filter: invert();
+            }
+
+            &.blur {
+                filter: blur(5px);
+            }
+
+            &.brightness {
+                filter: brightness(4);
+            }
+
+            &.contrast {
+                filter: contrast(200%);
+            }
+
+            &.saturate {
+                filter: saturate(300%);
+            }
+
+            &.hue-rotate {
+                filter: hue-rotate(180deg);
+            }
+
+            &.opacity {
+                filter: opacity(40%);
+            }
+
+            &.drop-shadow {
+                filter: drop-shadow(0 0 12px #fff);
+            }
+
+            &.combined {
+                filter: contrast(150%) saturate(200%) hue-rotate(90deg) drop-shadow(0 0 10px #ff0);
+            }
+
+            /* Va al final para que gane sobre los filtros de arriba */
+            &:hover {
+                filter: none;
+            }
         }
     </style>
 </head>
@@ -38,16 +79,22 @@
         </header>
 
         <section>
-            <section>
-                <h4>Original</h4>
-                <div class="filter"></div>
-                <h4>filter: sepia(100%)</h4>
-                <div class="filter sepia"></div>
-                <h4>filter: grayscale(100%)</h4>
-                <div class="filter grayscale"></div>
-                <h4>filter: invert(100%)</h4>
-                <div class="filter negative"></div>
-            </section>
+        <section>
+            <h4>GrayScale</h4>
+            <img class="filter grayscale" src="imgs/cyndaquil2.png" alt="Cyndaquil">
+            <h4>Blur</h4>
+            <img class="filter blur" src="imgs/cyndaquil2.png" alt="Cyndaquil">
+            <h4>Sepia</h4>
+            <img class="filter sepia" src="imgs/cyndaquil2.png" alt="Cyndaquil">
+            <h4>Brightness</h4>
+            <img class="filter brightness" src="imgs/cyndaquil2.png" alt="Cyndaquil">
+            <h4>Invert</h4>
+            <img class="filter negative" src="imgs/cyndaquil2.png" alt="Cyndaquil">
+            <h4>Drop Shadow</h4>
+            <img class="filter drop-shadow" src="imgs/cyndaquil2.png" alt="Cyndaquil">
+            <h4>HUE Rotate</h4>
+            <img class="filter hue-rotate" src="imgs/cyndaquil2.png" alt="Cyndaquil">
+        </section>
         </section>
     </main>
 </body>
