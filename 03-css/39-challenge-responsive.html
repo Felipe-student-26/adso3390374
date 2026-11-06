@@ -12,6 +12,33 @@
             transition: all 0.5s ease;
         }
 
+        @keyframes logo-spin {
+            from {
+                transform: rotateY(0);
+            }
+
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+
+        @keyframes logo-shine {
+            0% {
+                left: -45%;
+                opacity: 0;
+            }
+
+            8% {
+                opacity: 1;
+            }
+
+            30%,
+            100% {
+                left: 115%;
+                opacity: 0;
+            }
+        }
+
         body {
             background-color: #0b0f1a;
             background-image: url("imgs/Fondo wod of war.png");
@@ -36,11 +63,30 @@
                         background: url("imgs/fondo_pequeño wod of war.png") no-repeat center;
                         background-size: contain;
                         display: block;
-                        margin: 0 auto;
+                        margin: -1rem auto 0;
+                        position: relative;
+                        overflow: hidden;
                         padding: 0;
-                        height: 369px;
-                        width: 675px;
+                        height: 320px;
+                        width: 585px;
                         max-width: 100%;
+
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            top: -25%;
+                            left: -45%;
+                            width: 30%;
+                            height: 150%;
+                            background: linear-gradient(90deg, transparent, #ffffffb3, transparent);
+                            transform: rotate(25deg);
+                            animation: logo-shine 3s ease-in-out infinite;
+                            pointer-events: none;
+                        }
+
+                        &:hover {
+                            animation: logo-spin 2s ease-in-out;
+                        }
                     }
 
                     menu {
@@ -53,8 +99,9 @@
                             vertical-align: top;
                             width: 260px;
                             margin: 0 0.6rem;
+                            position: relative;
                             background-color: #000000b3;
-                            border: 2px solid #1677ff;
+                            border: 2px solid transparent;
                             border-radius: 8px;
                             overflow: hidden;
                             text-align: center;
@@ -62,10 +109,47 @@
 
                             &:hover {
                                 transform: translateY(-8px) scale(1.02);
-                                border-color: #1677ff;
                             }
 
-                            img {
+                            &.ice {
+                                border-color: #9be7ff;
+                                box-shadow: 0 0 12px #9be7ff, -8px -8px 24px #59cfff55, 0 10px 24px #00000099;
+                            }
+
+                            &.fire {
+                                border-color: #ff6a36;
+                                box-shadow: 0 0 10px 3px #ff6a36, 0 0 28px #ff4d2466, 8px 8px 18px #681b0d99;
+                            }
+
+                            &.wind {
+                                border-color: #fff;
+                                box-shadow: 0 0 12px #fff, 0 0 30px #ffffff66, -8px -8px 24px #ffffff33, 0 10px 24px #00000099;
+                            }
+
+                            &.divine {
+                                border-color: #f5d875;
+                                box-shadow: 0 0 12px #f5d875, 0 0 0 5px #f5d87555, 0 0 0 10px #b7832733, 0 12px 24px #00000099;
+                            }
+
+                            .element {
+                                position: absolute;
+                                top: 0.6rem;
+                                right: 0.6rem;
+                                left: 0.6rem;
+                                z-index: 3;
+                                padding: 0.4rem;
+                                border-radius: 4px;
+                                background-color: #000000b3;
+                                color: #fff;
+                                font-size: 0.85rem;
+                                font-weight: 600;
+                                letter-spacing: 1px;
+                                text-transform: uppercase;
+                                text-shadow: 0 1px 4px #000;
+                            }
+
+                            img,
+                            .weapon-art {
                                 width: 100%;
                                 height: 300px;
                                 object-fit: cover;
@@ -73,15 +157,26 @@
                             }
 
                             h4 {
+                                position: absolute;
+                                right: 0;
+                                bottom: 0;
+                                left: 0;
+                                z-index: 3;
+                                box-sizing: border-box;
                                 margin: 0;
                                 padding: 0.6rem 0;
-                                background-color: #000;
+                                background-color: #00000099;
                                 color: #fff;
                                 font-size: 1.1rem;
                                 font-weight: 600;
                                 text-transform: uppercase;
                                 letter-spacing: 1px;
                                 border-top: 2px solid #000;
+                            }
+
+                            img:hover + h4,
+                            .weapon-art:hover + h4 {
+                                transform: translateY(100%);
                             }
                         }
                     }
@@ -106,6 +201,10 @@
                             margin: 0 1.5rem 0.5rem 0;
                             border: 2px solid #c9a227;
                             border-radius: 6px;
+
+                            &:hover {
+                                transform: translateY(-10px) rotate(2deg);
+                            }
                         }
 
                         .text {
@@ -166,8 +265,8 @@
 
                     header {
                         figure.logo {
-                            height: 250px;
-                            width: 450px;
+                            height: 220px;
+                            width: 400px;
                         }
 
                         menu {
@@ -221,8 +320,8 @@
 
                     header {
                         figure.logo {
-                            height: 150px;
-                            width: 280px;
+                            height: 130px;
+                            width: 240px;
                         }
 
                         menu {
@@ -285,21 +384,25 @@
         <header>
             <figure class="logo" role="img" aria-label="Logo de God of War"></figure>
             <menu>
-                <div class="card">
-                    <img src="imgs/Freya.png" alt="Freya">
-                    <h4>Freya</h4>
+                <div class="card ice">
+                    <span class="element">Hielo</span>
+                    <img class="weapon-art" src="imgs/Hacha Leviatán.png" alt="Hacha Leviatán">
+                    <h4>Hacha Leviatán</h4>
                 </div>
-                <div class="card">
-                    <img src="imgs/Thor.png" alt="Thor">
-                    <h4>Thor</h4>
+                <div class="card fire">
+                    <span class="element">Fuego</span>
+                    <img class="weapon-art" src="imgs/Espadas del Caos.png" alt="Espadas del Caos">
+                    <h4>Espadas del Caos</h4>
                 </div>
-                <div class="card">
-                    <img src="imgs/Mimir.png" alt="Mimir">
-                    <h4>Mimir</h4>
+                <div class="card wind">
+                    <span class="element">Viento</span>
+                    <img class="weapon-art" src="imgs/Lanza de Draupnir.png" alt="Lanza de Draupnir">
+                    <h4>Lanza de Draupnir</h4>
                 </div>
-                <div class="card">
-                    <img src="imgs/Brok.png" alt="Brok">
-                    <h4>Brok</h4>
+                <div class="card divine">
+                    <span class="element">Poder Divino / Furia</span>
+                    <img class="weapon-art" src="imgs/Espada del Olimpo.png" alt="Espada del Olimpo">
+                    <h4>Espada del Olimpo</h4>
                 </div>
             </menu>
         </header>
@@ -325,6 +428,46 @@
                         su padre en un viaje para esparcir las cenizas de su madre desde la cima más alta de los nueve
                         reinos. Con el tiempo descubre su verdadero origen y aprende a hacerse cargo de su propio
                         destino.
+                    </p>
+                </div>
+            </div>
+            <div class="box">
+                <img src="imgs/Freya.png" alt="Freya">
+                <div class="text">
+                    <h2>Freya</h2>
+                    <p>
+                        Freya es una poderosa diosa Vanir y experta en magia. Tras conocer a Kratos y Atreus, pasa de
+                        ser una aliada cautelosa a convertirse en una amiga importante para ellos.
+                    </p>
+                </div>
+            </div>
+            <div class="box">
+                <img src="imgs/Thor.png" alt="Thor">
+                <div class="text">
+                    <h2>Thor</h2>
+                    <p>
+                        Thor es el dios nórdico del trueno y uno de los guerreros más temidos de Asgard. Empuña el
+                        martillo Mjölnir y se cruza en el camino de Kratos y Atreus.
+                    </p>
+                </div>
+            </div>
+            <div class="box">
+                <img src="imgs/Mimir.png" alt="Mimir">
+                <div class="text">
+                    <h2>Mimir</h2>
+                    <p>
+                        Mimir es conocido como el hombre más inteligente del mundo. Se convierte en compañero de
+                        Kratos y Atreus, y los ayuda con sus conocimientos sobre los reinos nórdicos.
+                    </p>
+                </div>
+            </div>
+            <div class="box">
+                <img src="imgs/Brok.png" alt="Brok">
+                <div class="text">
+                    <h2>Brok</h2>
+                    <p>
+                        Brok es un herrero enano de carácter directo y gran talento. Junto con su hermano Sindri,
+                        fabrica y mejora equipo para Kratos durante sus viajes.
                     </p>
                 </div>
             </div>
